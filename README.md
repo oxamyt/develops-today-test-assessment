@@ -16,7 +16,7 @@ Web application built with Next.js and Tailwind CSS that allows users to search 
 
 ```bash
 git clone git@github.com:oxamyt/develops-today-test-assessment.git
-cd recipe-finder
+cd develops-today-test-assessment
 npm install
 npm run dev
 ```

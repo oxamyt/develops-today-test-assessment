@@ -1,12 +1,12 @@
 import { fetchRecipeDetails } from "@/lib/api";
 import Image from "next/image";
 
-export default async function RecipeDetailsPage({
+export default async function Page({
   params,
 }: {
   params: { recipeId: string };
 }) {
-  const { recipeId } = params;
+  const { recipeId } = await params;
   const apiKey = process.env.API_KEY;
   const apiUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
   const recipe = await fetchRecipeDetails(apiUrl);
