@@ -9,6 +9,7 @@ export async function fetchRecipes(apiUrl: string) {
     }
 
     const data = await response.json();
+
     return data.results || [];
   } catch (err) {
     console.error(err);

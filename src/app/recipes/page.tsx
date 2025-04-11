@@ -5,7 +5,7 @@ interface Recipe {
 }
 
 import { fetchRecipes } from "@/lib/api";
-import Link from "next/link";
+import RecipesList from "./RecipesList";
 
 export default async function Page({
   searchParams,
@@ -23,9 +23,18 @@ export default async function Page({
 
   const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?${params.toString()}`;
 
-  const recipes: Recipe[] = await fetchRecipes(apiUrl);
+  let recipes: Recipe[] = [];
+  let error: string | null = null;
 
-  const error = null;
+  try {
+    recipes = await fetchRecipes(apiUrl);
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      error = `Failed to fetch recipes: ${err.message}`;
+    } else {
+      error = "An unknown error occurred while fetching recipes.";
+    }
+  }
 
   if (error) {
     return (
@@ -48,26 +57,8 @@ export default async function Page({
         <h1 className="text-4xl font-bold text-green-800 mb-8 text-center">
           Your Recipes
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {recipes.map((recipe) => (
-            <Link
-              key={recipe.id}
-              href={`/recipes/${recipe.id}`}
-              className="block group relative bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden border border-green-200 shadow-md"
-            >
-              <img
-                src={recipe.image || "/placeholder-image.jpg"}
-                alt={recipe.title}
-                className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="p-5">
-                <h2 className="text-xl font-semibold text-green-900 text-center">
-                  {recipe.title}
-                </h2>
-              </div>
-            </Link>
-          ))}
-        </div>
+
+        <RecipesList recipes={recipes} />
       </div>
     </div>
   );
