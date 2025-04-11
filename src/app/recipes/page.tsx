@@ -12,7 +12,7 @@ export default async function Page({
 }: {
   searchParams: { query?: string; cuisine?: string; maxPrepTime?: string };
 }) {
-  const { query, cuisine, maxPrepTime } = searchParams;
+  const { query, cuisine, maxPrepTime } = await searchParams;
 
   const params = new URLSearchParams();
   if (query) params.set("query", query);
