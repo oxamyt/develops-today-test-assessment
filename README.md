@@ -8,22 +8,15 @@ Web application built with Next.js and Tailwind CSS that allows users to search 
 - View detailed recipe information
 - Responsive UI
 
-### Search Form
-
-![Search Page](./search.png)
-
-### Recipes List
-
-![Recipes List](./RecipeList.png)
-
-### Recipe Details
-
-![Recipe Details](./RecipeDetails.png)
+![Search Page](https://res.cloudinary.com/dehoidlo0/image/upload/v1744380480/qgjgt27buf3pt7o15jzy.png)
+![Recipes List](https://res.cloudinary.com/dehoidlo0/image/upload/v1744380481/u1jyemxxrrwy2ykqkaq8.png)
+![Recipes Details](https://res.cloudinary.com/dehoidlo0/image/upload/v1744380480/ek6qmq4mq2fczfdlmm7q.png)
 
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/recipe-finder.git
+git clone git@github.com:oxamyt/develops-today-test-assessment.git
 cd recipe-finder
 npm install
+npm run dev
 ```
